@@ -27,9 +27,9 @@ StudyHub is a productivity web app designed for students, built to make studying
 
 - Backend: Node.js / Express
 
-- Database: MongoDB (for user data, flashcards, tasks, etc.)
-
-- Authentication: JWT (JSON Web Tokens) + password hashing
+- Database: Firestore Database
+  
+- Authentication: Firebase Authentication
 
 - Other Integrations: Spotify API
 

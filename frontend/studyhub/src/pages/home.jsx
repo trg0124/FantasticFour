@@ -57,68 +57,101 @@ export default function Home() {
         <Card title="⏱ Focus Timer" link="/timer" />
       </div>
 
-      {/* Spotify mini-player */}
-      <div style={{ marginTop: "3rem" }}>
-        <h3>🎧 Your Study Playlist</h3>
+      {/* Spotify Playlist Card */}
+<div
+  style={{
+    width: "100%",
+    maxWidth: "450px",
+    margin: "2rem auto",
+    background: "#FFFFFF",
+    borderRadius: "12px",
+    padding: "1.25rem 1.5rem",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
+    border: "1px solid #E5E7EB", // Tailwind gray-200
+  }}
+>
+  {/* Title Row */}
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <h3
+      style={{
+        fontSize: "1.1rem",
+        fontWeight: "600",
+        color: "#1F2937", // neutral-800
+        margin: 0,
+      }}
+    >
+      🎧 Your Study Playlist
+    </h3>
 
-        {/* Show current playlist */}
-        <iframe
-          style={{ borderRadius: "12px", marginTop: "1rem" }}
-          src={playlist}
-          width="80%"
-          height="152"
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
+    <p
+      onClick={() => setShowInput(!showInput)}
+      style={{
+        color: "#6B7280", // gray-500
+        fontSize: "0.85rem",
+        cursor: "pointer",
+        textDecoration: "underline",
+        margin: 0,
+      }}
+    >
+      Edit
+    </p>
+  </div>
 
-        {/* Button to change playlist */}
-        <p 
-          onClick={() => setShowInput(!showInput)} 
-          style={{
-          marginTop: "0.5rem",
-          color: "#555",
-          textDecoration: "underline",
+  {/* Spotify Player */}
+  <iframe
+    style={{
+      borderRadius: "12px",
+      width: "100%",
+      marginTop: "1rem",
+      border: "none",
+      background: "#F9FAFB",
+    }}
+    src={playlist}
+    height="152"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"
+  ></iframe>
+
+  {/* Edit Input */}
+  {showInput && (
+    <div style={{ marginTop: "1rem" }}>
+      <input
+        type="text"
+        placeholder="Paste Spotify playlist link"
+        value={newPlaylist}
+        onChange={(e) => setNewPlaylist(e.target.value)}
+        style={{
+          padding: "0.6rem",
+          width: "100%",
+          borderRadius: "8px",
+          border: "1px solid #D1D5DB", // gray-300
+          background: "#FFFFFF",
+          fontSize: "0.9rem",
+        }}
+      />
+
+      <button
+        onClick={savePlaylist}
+        style={{
+          marginTop: "0.75rem",
+          background: "#4F46E5", // your purple
+          width: "100%",
+          padding: "0.6rem",
+          borderRadius: "8px",
+          border: "none",
+          color: "white",
+          fontWeight: "500",
+          fontSize: "0.9rem",
           cursor: "pointer",
-          fontSize: "0.9rem"
-          }}
-        >
-        Change playlist
-        </p>
+          boxShadow: "0 2px 4px rgba(79, 70, 229, 0.3)",
+        }}
+      >
+        Save Playlist
+      </button>
+    </div>
+  )}
+</div>
 
-
-        {/* Input field */}
-        {showInput && (
-          <div style={{ marginTop: "1rem" }}>
-            <input
-              type="text"
-              placeholder="Paste your Spotify playlist link"
-              value={newPlaylist}
-              onChange={(e) => setNewPlaylist(e.target.value)}
-              style={{
-                padding: "0.5rem",
-                width: "300px",
-                borderRadius: "6px",
-                border: "1px solid #ccc"
-              }}
-            />
-            <button
-              onClick={savePlaylist}
-              style={{
-                marginLeft: "0.5rem",
-                padding: "0.5rem 1rem",
-                borderRadius: "6px",
-                border: "none",
-                background: "green",
-                color: "white",
-                cursor: "pointer"
-              }}
-            >
-              Save
-            </button>
-          </div>
-        )}
-      </div>
     </div>
   );
 }

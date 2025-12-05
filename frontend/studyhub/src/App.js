@@ -1,41 +1,64 @@
+import { useAuth } from "./components/Auth/authContext";
+import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Home from "./pages/home";
 import ProtectedRoute from "./components/Auth/protectedRoute";
-import { useAuth } from "./components/Auth/authContext";
-import './App.css';
+import Layout from "./components/ui/layout";
 
-function App() {
-  const { user } = useAuth();
-
+export default function App() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={user ? <Navigate to="/home" /> : <Navigate to="/login" />}
-      />
+      <Route path="/" element={<Navigate to="/login" />} />
 
-      <Route
-        path="/login"
-        element={user ? <Navigate to="/home" /> : <Login />}
-      />
-
-      <Route
-        path="/signup"
-        element={user ? <Navigate to="/home" /> : <Signup />}
-      />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
 
       <Route
         path="/home"
         element={
           <ProtectedRoute>
-            <Home />
+            <Layout>
+              <Home />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* pages you will create later */}
+      <Route
+        path="/todo"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <h1>To-Do List Page</h1>
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/flashcards"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <h1>Flashcards Page</h1>
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/timer"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <h1>Focus Timer Page</h1>
+            </Layout>
           </ProtectedRoute>
         }
       />
     </Routes>
   );
 }
-
-export default App;

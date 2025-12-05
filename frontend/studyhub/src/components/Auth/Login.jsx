@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "2rem" }}>
+    <div style={{ textAlign: "center", marginTop: "2rem"}}>
       <h2>Login</h2>
       <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "250px", margin: "0 auto" }}>
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />

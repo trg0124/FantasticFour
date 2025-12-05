@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../components/Auth/authContext";
 
 export default function Flashcards() {
   const [term, setTerm] = useState("");
-  const [definition, setDefinition] = useState("");
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFront, setShowFront] = useState(true);
@@ -21,7 +19,12 @@ export default function Flashcards() {
 
   const handleAddCard = (e) => {
     e.preventDefault();
-    if (!term.trim() || !definition.trim()) return;
+    if (!term.trim()) return;
+
+    const definition = window.prompt(
+      "Enter the answer/definition for this term:"
+    );
+    if (!definition || !definition.trim()) return;
 
     const newCard = {
       id: Date.now(),
@@ -31,104 +34,81 @@ export default function Flashcards() {
 
     setCards((prev) => [...prev, newCard]);
     setTerm("");
-    setDefinition("");
-    setCurrentIndex(cards.length);
+    setCurrentIndex(cards.length); // go to the new card
     setShowFront(true);
   };
 
-  const handleDeleteCurrent = () => {
+  const toggleShow = () => {
     if (cards.length === 0) return;
-    const updated = cards.filter((_, i) => i !== currentIndex);
-    setCards(updated);
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : 0));
-    setShowFront(true);
+    setShowFront((prev) => !prev);
   };
 
-  const handleNext = () => {
+  const nextCard = () => {
     if (cards.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % cards.length);
-    setShowFront(true);
-  };
-
-  const handlePrev = () => {
-    if (cards.length === 0) return;
-    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
     setShowFront(true);
   };
 
   const currentCard = cards[currentIndex];
 
   return (
-    <section className="panel flashcards-panel">
-      <header className="panel-header">
-        <h2>Flashcards</h2>
-        <span className="badge">Review</span>
-      </header>
+    <div className="flashcards-page">
+      {/* Big title like the mockup */}
+      <h1 className="flashcards-title">Flashcards</h1>
 
-      <div className="flashcards-layout">
-        <form className="flashcard-form" onSubmit={handleAddCard}>
-          <h3>Create a new card</h3>
-          <label>
-            Term
+      {/* White box in the center */}
+      <section className="flashcards-panel-outer">
+        <div className="flashcards-panel-inner">
+          {/* Top bar: Enter Term + Add Term */}
+          <form className="flashcards-input-row" onSubmit={handleAddCard}>
             <input
               type="text"
+              placeholder="Enter term..."
               value={term}
               onChange={(e) => setTerm(e.target.value)}
-              placeholder="Ex: TCP/IP"
             />
-          </label>
-          <label>
-            Definition
-            <textarea
-              rows="3"
-              value={definition}
-              onChange={(e) => setDefinition(e.target.value)}
-              placeholder="Ex: Core suite of communication protocols..."
-            />
-          </label>
-          <button type="submit" className="primary-btn">
-            Add Card
-          </button>
-        </form>
+            <button type="submit" className="flashcards-add-btn">
+              Add Term
+            </button>
+          </form>
 
-        <div className="flashcard-study">
-          <h3>Study mode</h3>
-          {cards.length === 0 ? (
-            <p className="empty-state">
-              No cards yet. Add a card on the left to get started.
-            </p>
-          ) : (
-            <>
-              <div
-                className="flashcard-display"
-                onClick={() => setShowFront(!showFront)}
-              >
-                <p className="flashcard-label">
-                  {showFront ? "Term" : "Definition"}
-                </p>
-                <p className="flashcard-text">
+          {/* Big card + button */}
+          <div className="flashcards-card-area">
+            <div
+              className={
+                cards.length === 0
+                  ? "flashcards-card flashcards-card-empty"
+                  : "flashcards-card"
+              }
+              onClick={nextCard}
+            >
+              {cards.length === 0 ? (
+                <span className="flashcards-placeholder">(WORD)</span>
+              ) : (
+                <span className="flashcards-text">
                   {showFront ? currentCard.term : currentCard.definition}
-                </p>
-                <p className="flashcard-hint">Click the card to flip</p>
-              </div>
+                </span>
+              )}
+            </div>
 
-          <div className="flashcard-controls">
-            <span>
-              {currentIndex + 1} / {cards.length}
-            </span>
+            <button
+              type="button"
+              className="flashcards-main-btn"
+              onClick={toggleShow}
+              disabled={cards.length === 0}
+            >
+              {showFront ? "Show Answer" : "Show Term"}
+            </button>
+
+            {cards.length > 0 && (
+              <p className="flashcards-counter">
+                Card {currentIndex + 1} of {cards.length} &mdash; click the card
+                to see the next one
+              </p>
+            )}
           </div>
-
-              <button
-                type="button"
-                className="danger-btn"
-                onClick={handleDeleteCurrent}
-              >
-                Delete this card
-              </button>
-            </>
-          )}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

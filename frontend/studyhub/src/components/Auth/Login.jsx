@@ -61,99 +61,186 @@ export default function Login() {
   }
 
   return (
+  <div
+    style={{
+      background: "#FFF7F7",
+      minHeight: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1rem",
+      fontFamily: "Poppins",
+      position: "relative",
+      overflow: "hidden",
+    }}
+  >
+    {/* Bottom-left illustration */}
+    <img
+      src="/student.png"
+      style={{
+        position: "absolute",
+        bottom: "5%",
+        left: "5%",
+        width: "15%",
+        opacity: 0.5,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}
+    />
+
+    {/* Top-right illustration */}
+    <img
+      src="/teacher.png"
+      style={{
+        position: "absolute",
+        top: "5%",
+        right: "5%",
+        width: "15%",
+        opacity: 0.5,
+        pointerEvents: "none",
+        userSelect: "none",
+      }}
+    />
+
+    {/* Hero Title */}
     <div
       style={{
-        background: "#FFF7F7",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "1rem",
-        fontFamily: "Poppins",
+        position: "absolute",
+        top: "3rem",
+        textAlign: "center",
+        width: "100%",
+        zIndex: 1,
       }}
     >
-      <div style={cardStyle}>
-        {/* Logo + Title */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
-          <img
-            src="/learning.png"
-            alt="logo"
-            style={{ width: "50px", height: "50px" }}
-          />
-          <h1 style={{ fontSize: "1.6rem", fontWeight: "600", margin: 0 }}>StudyHub</h1>
-        </div>
+      <h1
+        style={{
+          fontSize: "2.9rem",
+          fontWeight: "600",
+          color: "black",
+          marginBottom: "0.2rem",
+        }}
+      >
+        Welcome back 👋
+      </h1>
 
-        <h2 style={{ fontSize: "1.25rem", fontWeight: "500", color: "#374151", marginBottom: "1rem" }}>
-          Let’s get started!
-        </h2>
+    </div>
 
-        {error && (
-          <p style={{ color: "#DC2626", fontSize: "0.9rem", marginBottom: "1rem" }}>
-            {error}
-          </p>
-        )}
+    {/* The Login Card */}
+    <div style={cardStyle}>
+      {/* Logo + Title */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginBottom: "1rem",
+        }}
+      >
+        <img
+          src="/learning.png"
+          alt="logo"
+          style={{ width: "50px", height: "50px" }}
+        />
+        <h1 style={{ fontSize: "3.3rem", fontWeight: "600", margin: 0 }}>
+          StudyHub
+        </h1>
+      </div>
 
-        <form onSubmit={handleLogin} style={{ marginTop: "1rem" }}>
+      <h2
+        style={{
+          fontSize: "1.25rem",
+          fontWeight: "500",
+          color: "#374151",
+          marginBottom: "1rem",
+        }}
+      >
+        Let’s get started!
+      </h2>
+
+      {error && (
+        <p
+          style={{
+            color: "#DC2626",
+            fontSize: "0.9rem",
+            marginBottom: "1rem",
+          }}
+        >
+          {error}
+        </p>
+      )}
+
+      <form onSubmit={handleLogin} style={{ marginTop: "1rem" }}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{
+            ...inputStyle,
+            borderColor: email ? "#4F46E5" : "#D1D5DB",
+          }}
+        />
+
+        <div style={{ position: "relative" }}>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type={showPass ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               ...inputStyle,
-              borderColor: email ? "#4F46E5" : "#D1D5DB",
+              borderColor: password ? "#4F46E5" : "#D1D5DB",
             }}
           />
 
-          <div style={{ position: "relative" }}>
-            <input
-              type={showPass ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{
-                ...inputStyle,
-                borderColor: password ? "#4F46E5" : "#D1D5DB",
-              }}
-            />
-
-            <span
-              onClick={() => setShowPass(!showPass)}
-              style={{
-                position: "absolute",
-                right: "1rem",
-                top: "50%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-                opacity: 0.7,
-              }}
-            >
-            </span>
-          </div>
-
-          <button
-            type="submit"
+          <span
+            onClick={() => setShowPass(!showPass)}
             style={{
-              ...buttonStyle,
-              background: "#4F46E5",
+              position: "absolute",
+              right: "1rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              opacity: 0.7,
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#4338CA")}
-            onMouseLeave={(e) => (e.target.style.background = "#4F46E5")}
           >
-            Login
-          </button>
-        </form>
+          </span>
+        </div>
 
-        <p style={{ marginTop: "1rem", fontSize: "0.9rem", color: "#6B7280" }}>
-          Don’t have an account?{" "}
-          <Link
-            to="/signup"
-            style={{ color: "#4F46E5", textDecoration: "none", fontWeight: "500" }}
-          >
-            Register
-          </Link>
-        </p>
-      </div>
+        <button
+          type="submit"
+          style={{
+            ...buttonStyle,
+            background: "#4F46E5",
+          }}
+          onMouseEnter={(e) => (e.target.style.background = "#4338CA")}
+          onMouseLeave={(e) => (e.target.style.background = "#4F46E5")}
+        >
+          Login
+        </button>
+      </form>
+
+      <p
+        style={{
+          marginTop: "1rem",
+          fontSize: "0.9rem",
+          color: "#6B7280",
+        }}
+      >
+        Don’t have an account?{" "}
+        <Link
+          to="/signup"
+          style={{
+            color: "#4F46E5",
+            textDecoration: "none",
+            fontWeight: "500",
+          }}
+        >
+          Register
+        </Link>
+      </p>
     </div>
-  );
+  </div>
+);
 }

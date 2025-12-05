@@ -29,6 +29,7 @@ export default function Navbar() {
         <Link to="/home" style={{ color: "white", textDecoration: "none" }}>Home</Link>
         <Link to="/todo" style={{ color: "white", textDecoration: "none" }}>To-Do List</Link>
         <Link to="/flashcards" style={{ color: "white", textDecoration: "none" }}>Flashcards</Link>
+        <Link to="/motivation" style={{ color: "white", textDecoration: "none" }}>Motivation</Link>
         <Link to="/timer" style={{ color: "white", textDecoration: "none" }}>Focus Timer</Link>
         <button 
           onClick={handleLogout}

@@ -7,6 +7,8 @@ import Home from "./pages/home";
 import ProtectedRoute from "./components/Auth/protectedRoute";
 import Layout from "./components/ui/layout";
 import Todo from "./pages/todo";
+import Flashcards from "./pages/Flashcards";
+import Motivation from "./pages/Motivation";
 
 export default function App() {
   return (
@@ -27,7 +29,6 @@ export default function App() {
         }
       />
 
-      {/* pages you will create later */}
       <Route
         path="/todo"
         element={
@@ -45,7 +46,18 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Layout>
-              <h1>Flashcards Page</h1>
+              <Flashcards />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/motivation"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Motivation />
             </Layout>
           </ProtectedRoute>
         }

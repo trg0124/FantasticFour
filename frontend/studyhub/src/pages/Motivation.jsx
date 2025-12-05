@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../components/Auth/authContext";
 
 const QUOTES = [
   "The secret of getting ahead is getting started.",

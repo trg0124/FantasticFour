@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../components/Auth/authContext";
 
 export default function Flashcards() {
   const [term, setTerm] = useState("");

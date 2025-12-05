@@ -18,11 +18,14 @@ export default function Navbar() {
       justifyContent: "space-between",
       alignItems: "center",
       padding: "1rem 2rem",
-      backgroundColor: "#1e3a8a",
-      color: "white"
+      backgroundColor: "#4F46E5",
+      color: "black",
+      fontWeight: "bold",
+      fontFamily: "Poppins, sans-serif"
     }}>
       <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
-        <h2>📚 StudyHub</h2>
+        <img src="/learning.png" alt="StudyHub Logo" style={{ width: "64px", height: "64px", marginRight: "4px" }} />
+        <h2 style={{fontFamily: "Poppins, sans-serif", fontWeight: "bold"}}> StudyHub</h2>
       </Link>
 
       <div style={{ display: "flex", gap: "1.5rem" }}>
@@ -35,7 +38,7 @@ export default function Navbar() {
           onClick={handleLogout}
           style={{
             background: "white",
-            color: "#1e3a8a",
+            color: "#4F46E5",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "6px",

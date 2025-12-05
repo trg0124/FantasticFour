@@ -6,6 +6,7 @@ import Login from "./components/Auth/Login";
 import Home from "./pages/home";
 import ProtectedRoute from "./components/Auth/protectedRoute";
 import Layout from "./components/ui/layout";
+import Todo from "./pages/todo";
 
 export default function App() {
   return (
@@ -32,11 +33,12 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Layout>
-              <h1>To-Do List Page</h1>
+              <Todo />
             </Layout>
           </ProtectedRoute>
         }
       />
+
 
       <Route
         path="/flashcards"

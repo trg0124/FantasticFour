@@ -56,7 +56,7 @@ export default function Signup() {
       await createUserWithEmailAndPassword(auth, email, password);
       nav("/home");
     } catch (err) {
-      setError("Unable to create account. Try a stronger password.");
+      setError("Unable to create account. Try a different email or password.");
     }
   }
 
@@ -70,25 +70,100 @@ export default function Signup() {
         alignItems: "center",
         padding: "1rem",
         fontFamily: "Poppins",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Bottom-left illustration */}
+      <img
+        src="/student.png"
+        style={{
+          position: "absolute",
+          bottom: "5%",
+          left: "5%",
+          width: "15%",
+          opacity: 0.4,
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      />
+
+      {/* Top-right illustration */}
+      <img
+        src="/teacher.png"  // ← swap to your chosen asset
+        style={{
+          position: "absolute",
+          top: "5%",
+          right: "5%",
+          width: "15%",
+          opacity: 0.45,
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      />
+
+      {/* Hero Title */}
+      <div
+        style={{
+          position: "absolute",
+          top: "3rem",
+          textAlign: "center",
+          width: "100%",
+          zIndex: 1,
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "2.9rem",
+            fontWeight: "600",
+            color: "black",
+            marginBottom: "0.2rem",
+          }}
+        >
+          Join StudyHub 🎓
+        </h1>
+      </div>
+
+      {/* Signup card */}
       <div style={cardStyle}>
-        {/* Logo + Title */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "0.5rem",
+            marginBottom: "1rem",
+          }}
+        >
           <img
             src="/learning.png"
             alt="logo"
             style={{ width: "50px", height: "50px" }}
           />
-          <h1 style={{ fontSize: "1.6rem", fontWeight: "600", margin: 0 }}>StudyHub</h1>
+          <h1 style={{ fontSize: "3.3rem", fontWeight: "600", margin: 0 }}>
+            StudyHub
+          </h1>
         </div>
 
-        <h2 style={{ fontSize: "1.25rem", fontWeight: "500", color: "#374151", marginBottom: "1rem" }}>
-          Your adventure begins now!
+        <h2
+          style={{
+            fontSize: "1.25rem",
+            fontWeight: "500",
+            color: "#374151",
+            marginBottom: "1rem",
+          }}
+        >
+         Start your adventure now!
         </h2>
 
         {error && (
-          <p style={{ color: "#DC2626", fontSize: "0.9rem", marginBottom: "1rem" }}>
+          <p
+            style={{
+              color: "#DC2626",
+              fontSize: "0.9rem",
+              marginBottom: "1rem",
+            }}
+          >
             {error}
           </p>
         )}
@@ -121,7 +196,7 @@ export default function Signup() {
               onClick={() => setShowPass(!showPass)}
               style={{
                 position: "absolute",
-                right: "1rem",
+                right: "2rem",
                 top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
@@ -144,11 +219,21 @@ export default function Signup() {
           </button>
         </form>
 
-        <p style={{ marginTop: "1rem", fontSize: "0.9rem", color: "#6B7280" }}>
+        <p
+          style={{
+            marginTop: "1rem",
+            fontSize: "0.9rem",
+            color: "#6B7280",
+          }}
+        >
           Already have an account?{" "}
           <Link
             to="/login"
-            style={{ color: "#4F46E5", textDecoration: "none", fontWeight: "500" }}
+            style={{
+              color: "#4F46E5",
+              textDecoration: "none",
+              fontWeight: "500",
+            }}
           >
             Login
           </Link>

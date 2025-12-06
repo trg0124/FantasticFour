@@ -100,6 +100,7 @@ export default function Pomodoro() {
         boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
         fontFamily: "Poppins",
         width: "100%",
+        border: "5px solid #4F46E5",
         maxWidth: "350px",
       }}
     >
@@ -108,7 +109,7 @@ export default function Pomodoro() {
           fontSize: "1.3rem",
           fontWeight: "600",
           marginBottom: "1rem",
-          color: "#4F46E5",
+          color: "black",
         }}
       >
         Pomodoro Timer

@@ -69,7 +69,7 @@ export default function Home() {
     borderRadius: "12px",
     padding: "1.25rem 1.5rem",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
-    border: "1px solid #E5E7EB", // Tailwind gray-200
+    border: "5px solid #4F46E5",
   }}
 >
   {/* Title Row */}
@@ -169,6 +169,7 @@ function Card({ title, link }) {
         width: "160px",
         boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         cursor: "pointer",
+        border: "5px solid #4F46E5",
         fontWeight: "bold"
       }}
     >

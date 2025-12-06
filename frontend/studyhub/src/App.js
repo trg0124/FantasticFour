@@ -65,17 +65,6 @@ export default function App() {
       />
 
       <Route
-        path="/timer"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <h1>Focus Timer Page</h1>
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
         path="/account"
         element={
           <ProtectedRoute>

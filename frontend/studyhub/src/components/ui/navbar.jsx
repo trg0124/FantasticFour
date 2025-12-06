@@ -13,6 +13,7 @@ export default function Navbar() {
     { to: "/flashcards", label: "Flashcards" },
     { to: "/motivation", label: "Motivation" },
     { to: "/timer", label: "Focus Timer" },
+    { to: "/account", label: "Your account"}
   ];
 
 

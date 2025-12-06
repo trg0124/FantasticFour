@@ -9,6 +9,7 @@ import Layout from "./components/ui/layout";
 import Todo from "./pages/todo";
 import Flashcards from "./pages/Flashcards";
 import Motivation from "./pages/Motivation";
+import Account from "./pages/Account";
 
 export default function App() {
   return (
@@ -69,6 +70,17 @@ export default function App() {
           <ProtectedRoute>
             <Layout>
               <h1>Focus Timer Page</h1>
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/account"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Account />
             </Layout>
           </ProtectedRoute>
         }

@@ -42,7 +42,7 @@ export default function Home() {
       <h1>Welcome, {user?.email} 👋</h1>
 
       <p style={{ marginTop: "1rem", fontSize: "1.2rem" }}>
-        Choose a tool to begin:
+        Choose a tool to begin your study session:
       </p>
 
       <div style={{

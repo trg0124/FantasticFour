@@ -1,9 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/authContext";
+import { useState } from "react";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const nav = useNavigate();
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const links = [
+    { to: "/home", label: "Home" },
+    { to: "/todo", label: "To-Do List" },
+    { to: "/flashcards", label: "Flashcards" },
+    { to: "/motivation", label: "Motivation" },
+    { to: "/timer", label: "Focus Timer" },
+  ];
+
 
   const handleLogout = async () => {
     await logout();
@@ -24,21 +35,48 @@ export default function Navbar() {
       fontFamily: "Poppins, sans-serif"
     }}>
       <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
-        <img src="/learning.png" alt="StudyHub Logo" style={{ width: "64px", height: "64px", marginRight: "4px" }} />
-        <h2 style={{fontFamily: "Poppins, sans-serif", fontWeight: "bold"}}> StudyHub</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "0.5rem",
+            color: "black",
+            fontFamily: "Poppins",
+          }}
+        >
+          <img
+            src="/learning.png"
+            alt="logo"
+            style={{ width: "50px", height: "50px" }}
+          />
+          <h1 style={{ fontSize: "2.7rem", fontWeight: "500", margin: 0 }}>
+            StudyHub
+          </h1>
+        </div>
       </Link>
 
       <div style={{ display: "flex", gap: "1.5rem" }}>
-        <Link to="/home" style={{ color: "white", textDecoration: "none" }}>Home</Link>
-        <Link to="/todo" style={{ color: "white", textDecoration: "none" }}>To-Do List</Link>
-        <Link to="/flashcards" style={{ color: "white", textDecoration: "none" }}>Flashcards</Link>
-        <Link to="/motivation" style={{ color: "white", textDecoration: "none" }}>Motivation</Link>
-        <Link to="/timer" style={{ color: "white", textDecoration: "none" }}>Focus Timer</Link>
+        {links.map((link, i) => (
+          <Link
+            key={i}
+            to={link.to}
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            style={{
+              color: hoveredIndex === i ? "white" : "black",
+              textDecoration: "none",
+              fontSize: "1.5rem",
+            }}
+          >
+            {link.label}
+          </Link>
+        ))}
         <button 
           onClick={handleLogout}
           style={{
             background: "white",
-            color: "#4F46E5",
+            color: "black",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "6px",

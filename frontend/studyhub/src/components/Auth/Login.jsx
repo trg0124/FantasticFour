@@ -82,7 +82,7 @@ export default function Login() {
         bottom: "5%",
         left: "5%",
         width: "15%",
-        opacity: 0.5,
+        opacity: 0.8,
         pointerEvents: "none",
         userSelect: "none",
       }}
@@ -96,7 +96,7 @@ export default function Login() {
         top: "5%",
         right: "5%",
         width: "15%",
-        opacity: 0.5,
+        opacity: 0.8,
         pointerEvents: "none",
         userSelect: "none",
       }}
@@ -115,7 +115,7 @@ export default function Login() {
       <h1
         style={{
           fontSize: "2.9rem",
-          fontWeight: "600",
+          fontWeight: "500",
           color: "black",
           marginBottom: "0.2rem",
         }}
@@ -142,7 +142,7 @@ export default function Login() {
           alt="logo"
           style={{ width: "50px", height: "50px" }}
         />
-        <h1 style={{ fontSize: "3.3rem", fontWeight: "600", margin: 0 }}>
+        <h1 style={{ fontSize: "3.3rem", fontWeight: "500", margin: 0 }}>
           StudyHub
         </h1>
       </div>

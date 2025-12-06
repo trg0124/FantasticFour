@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./Flashcards.css"; 
 
 export default function Flashcards() {
   const [term, setTerm] = useState("");
@@ -21,9 +22,7 @@ export default function Flashcards() {
     e.preventDefault();
     if (!term.trim()) return;
 
-    const definition = window.prompt(
-      "Enter the answer/definition for this term:"
-    );
+    const definition = window.prompt("Enter the answer/definition:");
     if (!definition || !definition.trim()) return;
 
     const newCard = {
@@ -34,17 +33,17 @@ export default function Flashcards() {
 
     setCards((prev) => [...prev, newCard]);
     setTerm("");
-    setCurrentIndex(cards.length); // go to the new card
+    setCurrentIndex(cards.length);
     setShowFront(true);
   };
 
   const toggleShow = () => {
-    if (cards.length === 0) return;
+    if (!cards.length) return;
     setShowFront((prev) => !prev);
   };
 
   const nextCard = () => {
-    if (cards.length === 0) return;
+    if (!cards.length) return;
     setCurrentIndex((prev) => (prev + 1) % cards.length);
     setShowFront(true);
   };
@@ -53,13 +52,16 @@ export default function Flashcards() {
 
   return (
     <div className="flashcards-page">
-      {/* Big title like the mockup */}
-      <h1 className="flashcards-title">Flashcards</h1>
+      {/* Page title */}
+      <div className="flashcards-title-row">
+        <h1 className="flashcards-title">Flashcards</h1>
+      </div>
 
-      {/* White box in the center */}
-      <section className="flashcards-panel-outer">
+      {/* White card container */}
+      <div className="flashcards-panel-outer">
         <div className="flashcards-panel-inner">
-          {/* Top bar: Enter Term + Add Term */}
+          
+          {/* Input row */}
           <form className="flashcards-input-row" onSubmit={handleAddCard}>
             <input
               type="text"
@@ -72,22 +74,22 @@ export default function Flashcards() {
             </button>
           </form>
 
-          {/* Big card + button */}
+          {/* Flashcard section */}
           <div className="flashcards-card-area">
             <div
               className={
-                cards.length === 0
-                  ? "flashcards-card flashcards-card-empty"
-                  : "flashcards-card"
+                cards.length
+                  ? "flashcards-card"
+                  : "flashcards-card flashcards-card-empty"
               }
               onClick={nextCard}
             >
-              {cards.length === 0 ? (
-                <span className="flashcards-placeholder">(WORD)</span>
-              ) : (
+              {cards.length ? (
                 <span className="flashcards-text">
                   {showFront ? currentCard.term : currentCard.definition}
                 </span>
+              ) : (
+                <span className="flashcards-placeholder">(WORD)</span>
               )}
             </div>
 
@@ -95,20 +97,19 @@ export default function Flashcards() {
               type="button"
               className="flashcards-main-btn"
               onClick={toggleShow}
-              disabled={cards.length === 0}
+              disabled={!cards.length}
             >
               {showFront ? "Show Answer" : "Show Term"}
             </button>
 
             {cards.length > 0 && (
               <p className="flashcards-counter">
-                Card {currentIndex + 1} of {cards.length} &mdash; click the card
-                to see the next one
+                Card {currentIndex + 1} of {cards.length} — click the card to go next
               </p>
             )}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

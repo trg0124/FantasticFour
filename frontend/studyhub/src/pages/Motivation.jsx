@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../components/Auth/authContext";
 
 const QUOTES = [
   "The secret of getting ahead is getting started.",
@@ -14,7 +15,6 @@ export default function Motivation() {
   const [goals, setGoals] = useState([]);
   const [streak, setStreak] = useState(1);
 
-  // --- streak stored in localStorage so it sticks between refreshes ---
   useEffect(() => {
     const storedStreak = localStorage.getItem("studyhub_streak");
     const storedDate = localStorage.getItem("studyhub_lastDate");
@@ -24,11 +24,9 @@ export default function Motivation() {
       if (storedDate === today) {
         setStreak(parseInt(storedStreak, 10));
       } else {
-        setStreak(parseInt(storedStreak, 10) + 1);
-        localStorage.setItem(
-          "studyhub_streak",
-          (parseInt(storedStreak, 10) + 1).toString()
-        );
+        const next = parseInt(storedStreak, 10) + 1;
+        setStreak(next);
+        localStorage.setItem("studyhub_streak", String(next));
         localStorage.setItem("studyhub_lastDate", today);
       }
     } else {
@@ -51,9 +49,7 @@ export default function Motivation() {
 
   const toggleGoal = (id) => {
     setGoals((prev) =>
-      prev.map((g) =>
-        g.id === id ? { ...g, done: !g.done } : g
-      )
+      prev.map((g) => (g.id === id ? { ...g, done: !g.done } : g))
     );
   };
 

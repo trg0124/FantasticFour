@@ -8,11 +8,6 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const links = [
-    { to: "/home", label: "Home" },
-    { to: "/todo", label: "To-Do List" },
-    { to: "/flashcards", label: "Flashcards" },
-    { to: "/motivation", label: "Motivation" },
-    { to: "/timer", label: "Focus Timer" },
     { to: "/account", label: "Your account"}
   ];
 

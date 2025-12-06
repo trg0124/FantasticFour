@@ -2,6 +2,7 @@ import { useAuth } from "../components/Auth/authContext";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import Pomodoro from "../components/pomodoro";
 
 export default function Home() {
   const { user } = useAuth();
@@ -52,9 +53,10 @@ export default function Home() {
         gap: "2rem",
         flexWrap: "wrap"
       }}>
+        <Pomodoro />
         <Card title="📝 To-Do List" link="/todo" />
         <Card title="📚 Flashcards" link="/flashcards" />
-        <Card title="⏱ Focus Timer" link="/timer" />
+        <Card title="emoji Motivation" link="/motivation" />
       </div>
 
       {/* Spotify Playlist Card */}

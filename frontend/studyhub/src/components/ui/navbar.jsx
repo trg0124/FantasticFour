@@ -6,6 +6,7 @@ export default function Navbar() {
   const { user, logout } = useAuth();
   const nav = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isHovered, setIsHovered] = useState(false); 
 
   const links = [
     { to: "/account", label: "Your account"}
@@ -32,12 +33,14 @@ export default function Navbar() {
     }}>
       <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
         <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             gap: "0.5rem",
-            color: "black",
+            color: isHovered ? "white" : "black",
             fontFamily: "Poppins",
           }}
         >

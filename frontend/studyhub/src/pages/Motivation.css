@@ -1,0 +1,126 @@
+.motivation-page {
+  padding: 40px 60px;
+  background-color: #fff4f6;
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
+}
+
+.motivation-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Grid layout (3 cards) */
+.motivation-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .motivation-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "quote streak"
+      "goals goals";
+  }
+
+  .quotes-panel {
+    grid-area: quote;
+  }
+
+  .streak-panel {
+    grid-area: streak;
+  }
+
+  .goals-panel {
+    grid-area: goals;
+  }
+}
+
+.motivation-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.motivation-panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  min-height: 60px;
+  margin-bottom: 16px;
+}
+
+.streak-num {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.streak-caption {
+  color: #777;
+}
+
+.goal-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.goal-input-row input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.goal-input-row button {
+  padding: 6px 14px;
+  border: none;
+  background: #4d46e8;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.goals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.goal-item span {
+  font-size: 1rem;
+}
+
+.goal-item.done span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.empty-goals {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.motivation-btn {
+  background: #4d46e8;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

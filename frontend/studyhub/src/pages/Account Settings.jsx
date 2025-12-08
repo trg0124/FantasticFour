@@ -83,6 +83,38 @@ const Section = ({ title, children }) => (
       <h1 style={{ fontSize: "2rem", fontWeight: 600, marginBottom: "2rem" }}>
           Account Settings
         </h1>
+
+      {/* Profile */}
+      <Section title="Profile">
+        <Row label="Name" value={user?.displayName || "No name set"} link="/ edit-name" />
+        <Row label="Email" value={user?.email} link="/edit-email" />
+         <Row label="School" value="University of ———" link="/edit-school" />
+         <Row label="Major" value="Major in ———" link="/edit-major" />
+        
+         </Section>
+        {/* Study Goals */}
+       <Section title="Study Goals">
+         <Row label="Daily Goal" value="Set your study target" link="/edit-goal" / >
+
+         </Section>
+      {/* Security */}
+        <Section title="Security">
+          <Row label="Password" value="********" link="/change-password" />
+          
+          </Section>
+      {/* Terms */}
+      <Section title="Legal">
+        <Row label="Terms & Conditions" value="View details" link="/terms" />
+        <Row label="Privacy Policy" value="Read the policy" link="/privacy" />
+                </Section>
+      </div>
+    </div>
+  );
+}
+      
+      
+    
+        
         
   
 

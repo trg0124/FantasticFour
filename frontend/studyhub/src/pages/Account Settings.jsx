@@ -36,4 +36,53 @@ export default function Account() {
       </button>
     </div>
   );
+const Section = ({ title, children }) => (
+   <div style={{ marginBottom: "2rem" }}>
+     <h2
+       style={{
+          fontSize: "1.3rem",
+          fontWeight: 600,
+          color: "#5A4AE3",
+          marginBottom: "1rem",
+        }}
+       >
+       {title}
+     </h2>
+     <div
+       style={{
+         background: "#F7F7FF",
+          padding: "1.5rem",
+          borderRadius: "12px",
+        }}
+       >
+       {children}
+     </div>
+   </div>
+  );
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#FFF7F7",
+        padding: "3rem 1.5rem",
+        fontFamily: "Poppins",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          background: "white",
+          borderRadius: "16px",
+          padding: "2rem",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      <h1 style={{ fontSize: "2rem", fontWeight: 600, marginBottom: "2rem" }}>
+          Account Settings
+        </h1>
+        
+  
 

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Motivation.css";
 
-import { useEffect, useState } from "react";
-import { useAuth } from "../components/Auth/authContext";
-
 const QUOTES = [
   "The secret of getting ahead is getting started.",
   "Small steps every day add up to big results.",

@@ -10,6 +10,7 @@ import Todo from "./pages/todo";
 import Flashcards from "./pages/Flashcards";
 import Motivation from "./pages/Motivation";
 import Account from "./pages/Account";
+import Settings from "./pages/Settings";
 
 export default function App() {
   return (
@@ -74,6 +75,18 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+
+         <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Motivation />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   );
 }

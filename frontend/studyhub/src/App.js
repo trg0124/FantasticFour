@@ -81,7 +81,7 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Layout>
-              <Motivation />
+              <Settings />
             </Layout>
           </ProtectedRoute>
         }

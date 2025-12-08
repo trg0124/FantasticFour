@@ -1,1 +1,36 @@
+.resources-container {
+  background: "#FFF7F7",
+   padding: 40px 60px;
+  min-height: 100vh;
+  border: 2px solid #ccc;
+}
+
+.resources-title {
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  gap: 25px;
+}
+
+.resource-button {
+  background-color: #5246e8;
+  color: white;
+  padding: 16px 32px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+}
+
+.resource-button:hover {
+  transform: scale(1.03);
+}
 

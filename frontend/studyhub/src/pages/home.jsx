@@ -1,7 +1,7 @@
 import { useAuth } from "../components/Auth/authContext";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, doc, query, where, setDoc, onSnapshot } from "firebase/firestore";
 import Pomodoro from "../components/pomodoro";
 
 // --- TO-DO CARD ---
@@ -138,20 +138,39 @@ function SpotifyCard() {
   const [newPlaylist, setNewPlaylist] = useState("");
   const [showInput, setShowInput] = useState(false);
 
+  // ---- LOAD USER PLAYLIST ----
   useEffect(() => {
     if (!user) return;
-    const ref = collection(db, "users");
-    onSnapshot(ref, (snapshot) => {
-      const docData = snapshot.docs.find((d) => d.id === user.uid)?.data();
-      if (docData?.playlist) setPlaylist(docData.playlist);
+
+    const userRef = doc(db, "users", user.uid);
+
+    const unsubscribe = onSnapshot(userRef, (snapshot) => {
+      if (snapshot.exists() && snapshot.data().playlist) {
+        setPlaylist(snapshot.data().playlist);
+      }
     });
+
+    return unsubscribe;
   }, [user]);
 
+  // ---- SAVE PLAYLIST ----
   const savePlaylist = async () => {
     if (!newPlaylist.trim()) return;
-    const embedLink = newPlaylist.replace("open.spotify.com/", "open.spotify.com/embed/");
-    const ref = collection(db, "users").doc(user.uid);
-    await ref.set({ playlist: embedLink }, { merge: true });
+
+    // Turn normal link into embed link
+    const embedLink = newPlaylist.replace(
+      "open.spotify.com/",
+      "open.spotify.com/embed/"
+    );
+
+    const userRef = doc(db, "users", user.uid);
+
+    await setDoc(
+      userRef,
+      { playlist: embedLink },
+      { merge: true }
+    );
+
     setPlaylist(embedLink);
     setShowInput(false);
     setNewPlaylist("");
@@ -172,11 +191,17 @@ function SpotifyCard() {
         <h3 style={{ fontSize: "1.1rem", margin: 0 }}>🎧 Your Playlist</h3>
         <p
           onClick={() => setShowInput(!showInput)}
-          style={{ cursor: "pointer", color: "#6B7280", fontSize: "0.85rem", textDecoration: "underline" }}
+          style={{
+            cursor: "pointer",
+            color: "#6B7280",
+            fontSize: "0.85rem",
+            textDecoration: "underline",
+          }}
         >
           Edit
         </p>
       </div>
+
       <iframe
         src={playlist}
         width="100%"
@@ -185,6 +210,7 @@ function SpotifyCard() {
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
+
       {showInput && (
         <div>
           <input
@@ -219,6 +245,7 @@ function SpotifyCard() {
     </div>
   );
 }
+
 
 // --- HOME PAGE ---
 export default function Home() {

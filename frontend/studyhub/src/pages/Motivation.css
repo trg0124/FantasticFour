@@ -5,122 +5,138 @@
   box-sizing: border-box;
 }
 
-.motivation-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-/* Grid layout (3 cards) */
-.motivation-grid {
-  display: grid;
-  gap: 24px;
-}
-
-@media (min-width: 900px) {
-  .motivation-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "quote streak"
-      "goals goals";
-  }
-
-  .quotes-panel {
-    grid-area: quote;
-  }
-
-  .streak-panel {
-    grid-area: streak;
-  }
-
-  .goals-panel {
-    grid-area: goals;
-  }
-}
-
-.motivation-panel {
+.motivation-inner {
   background: #ffffff;
   border-radius: 16px;
-  padding: 22px 24px 28px;
+  padding: 32px 40px 36px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.motivation-panel h2 {
-  margin-top: 0;
-  margin-bottom: 12px;
+.motivation-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
 }
 
-.quote-text {
-  font-size: 1.1rem;
-  min-height: 60px;
-  margin-bottom: 16px;
+.motivation-subtitle {
+  margin: 0;
+  color: #555;
+  font-size: 0.98rem;
 }
 
-.streak-num {
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.streak-caption {
-  color: #777;
-}
-
-.goal-input-row {
+.motivation-top-row {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 18px;
+  margin-top: 28px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
 }
 
-.goal-input-row input {
+.motivation-info-card {
   flex: 1;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.goal-input-row button {
-  padding: 6px 14px;
-  border: none;
+  min-width: 180px;
   background: #4d46e8;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 18px 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.goals-list {
-  list-style: none;
-  padding: 0;
+.motivation-info-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.15s ease;
+}
+
+.motivation-quote {
+  font-size: 0.95rem;
+  margin: 0 0 6px 0;
+}
+
+.motivation-quote-hint {
+  font-size: 0.8rem;
+  opacity: 0.8;
   margin: 0;
 }
 
-.goal-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 0;
-  cursor: pointer;
+/* Center goals card text */
+.motivation-center-card {
+  text-align: center;
 }
 
-.goal-item span {
+.motivation-center-line {
+  margin: 0;
   font-size: 1rem;
 }
 
-.goal-item.done span {
-  text-decoration: line-through;
-  color: #888;
+.motivation-streak-card {
+  text-align: center;
+  align-items: center;
 }
 
-.empty-goals {
-  color: #777;
-  font-size: 0.95rem;
+.motivation-streak-number {
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 6px;
 }
 
-.motivation-btn {
+.motivation-streak-label {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.motivation-bottom-banner {
   background: #4d46e8;
-  color: white;
-  padding: 8px 18px;
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 22px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.motivation-bottom-quote {
+  margin: 0 0 6px 0;
+  font-size: 0.98rem;
+}
+
+.motivation-bottom-author {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.motivation-join-btn {
+  background: #ffffff;
+  color: #4d46e8;
   border: none;
-  border-radius: 8px;
+  border-radius: 999px;
+  padding: 10px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .motivation-page {
+    padding: 24px 16px;
+  }
+
+  .motivation-inner {
+    padding: 24px 18px 26px;
+  }
+
+  .motivation-heading {
+    font-size: 2rem;
+  }
 }

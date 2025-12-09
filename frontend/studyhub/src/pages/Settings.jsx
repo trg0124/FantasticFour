@@ -5,6 +5,7 @@ import { useAuth } from "../auth/AuthContext";
 export default function Account() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  
   const Row = ({ label, value, link }) => (
     <div
       style= {{
@@ -19,6 +20,7 @@ export default function Account() {
         <p style={{ fontWeight: 600 }}>{label}</p>
         <p style={{ marginTop: "4px", color: "#666" }}>{value}</p>
       </div>
+      
        {/* Edit Button */}
       <button
         onClick={() => navigate(link)}
@@ -36,6 +38,7 @@ export default function Account() {
       </button>
     </div>
   );
+  
 const Section = ({ title, children }) => (
    <div style={{ marginBottom: "2rem" }}>
      <h2
@@ -80,33 +83,48 @@ const Section = ({ title, children }) => (
           padding: "2rem",
           boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
         }}
-      <h1 style={{ fontSize: "2rem", fontWeight: 600, marginBottom: "2rem" }}>
+      >
+        <h1
+          style={{
+            fontSize: "2rem",
+            fontWeight: 600,
+            marginBottom: "2rem",
+          }}
+        >
           Account Settings
         </h1>
 
       {/* Profile */}
-      <Section title="Profile">
-        <Row label="Name" value={user?.displayName || "No name set"} link="/ edit-name" />
-        <Row label="Email" value={user?.email} link="/edit-email" />
-         <Row label="School" value="University of ———" link="/edit-school" />
-         <Row label="Major" value="Major in ———" link="/edit-major" />
-        
-         </Section>
-        {/* Study Goals */}
-       <Section title="Study Goals">
-         <Row label="Daily Goal" value="Set your study target" link="/edit-goal" / >
+        <Section title="Study Goals">
+          <Row
+            label="Daily Goal"
+            value="Set your study target"
+            link="/edit-goal"
+          />
+        </Section>
 
-         </Section>
-      {/* Security */}
+        {/* Security Section */}
         <Section title="Security">
-          <Row label="Password" value="********" link="/change-password" />
-          
-          </Section>
-      {/* Terms */}
-      <Section title="Legal">
-        <Row label="Terms & Conditions" value="View details" link="/terms" />
-        <Row label="Privacy Policy" value="Read the policy" link="/privacy" />
-                </Section>
+          <Row
+            label="Password"
+            value="********"
+            link="/change-password"
+          />
+        </Section>
+
+        {/* Legal Section */}
+        <Section title="Legal">
+          <Row
+            label="Terms & Conditions"
+            value="View details"
+            link="/terms"
+          />
+          <Row
+            label="Privacy Policy"
+            value="Read the policy"
+            link="/privacy"
+          />
+        </Section>
       </div>
     </div>
   );

@@ -75,15 +75,11 @@ function FlashcardCard() {
         borderRadius: "12px",
         padding: "1.5rem",
         width: "260px",
-        height: "220px",
         boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
-        textAlign: "center",       // ⭐ CENTER TEXT
-        display: "flex",            // ⭐ CENTER CONTENT
-        flexDirection: "column",
-        justifyContent: "center",
+        textAlign: "center",   // ✅ only horizontal centering
       }}
     >
       <h3 style={{ marginBottom: "0.5rem" }}>📚 Flashcards</h3>
@@ -139,23 +135,19 @@ function MotivationCard() {
         borderRadius: "12px",
         padding: "1.5rem",
         width: "260px",
-        height: "220px",
         boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
-        textAlign: "center",         
-        display: "flex",             
-        flexDirection: "column",
-        justifyContent: "center",
+        textAlign: "center",   // ✅ horizontal centering only
       }}
     >
-      <h3 style={{ marginBottom: "0.5rem" }}> Motivation</h3>
+      <h3 style={{ marginBottom: "0.5rem" }}>💡 Motivation</h3>
 
       {streak > 0 ? (
         <>
-          <p style={{ fontSize: "1rem", fontWeight: 600 }}>
-            {streak} day streak 
+          <p style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "0.25rem" }}>
+            {streak} day streak ✅
           </p>
           <p style={{ fontSize: "0.85rem" }}>
             Keep going! Click to see your full motivation board.

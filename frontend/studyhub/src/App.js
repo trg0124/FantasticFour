@@ -1,6 +1,7 @@
 import { useAuth } from "./components/Auth/authContext";
 import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Home from "./pages/home";
@@ -17,8 +18,6 @@ import TermsConditions from "./pages/TermsConditions";
 import HelpCenter from "./pages/HelpCenter";
 import Accessibility from "./pages/Accessibility";
 import FAQs from "./pages/FAQs";
-
-
 
 export default function App() {
   return (
@@ -104,14 +103,15 @@ export default function App() {
             </ProtctedRoute>
             } 
             /> 
-              <Route
-        path="/terms-conditions"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <TermsConditions />
+              
+      <Route
+        path="/privacy-policy"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <PrivacyPolicy />
             </Layout>
-            </ProtctedRoute>
+          </ProtectedRoute> 
             } 
             />
                <Route
@@ -145,7 +145,17 @@ export default function App() {
             </ProtctedRoute>
             } 
             />
-      
+              
+      <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Resources />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
 
     </Routes>
   );

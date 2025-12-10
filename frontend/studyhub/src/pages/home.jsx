@@ -51,17 +51,19 @@ function TodoCard() {
 
 // --- FLASHCARDS CARD ---
 function FlashcardCard() {
-  const { user } = useAuth();
-  const [cards, setCards] = useState([]);
+  const [cardCount, setCardCount] = useState(0);
 
   useEffect(() => {
-    if (!user) return;
-    const q = query(collection(db, "flashcards"), where("uid", "==", user.uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setCards(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return unsubscribe;
-  }, [user]);
+    const stored = localStorage.getItem("studyhub_flashcards");
+    if (!stored) return;
+
+    try {
+      const parsed = JSON.parse(stored);
+      setCardCount(Array.isArray(parsed) ? parsed.length : 0);
+    } catch {
+      setCardCount(0);
+    }
+  }, []);
 
   return (
     <div
@@ -93,17 +95,15 @@ function FlashcardCard() {
 
 // --- MOTIVATION CARD ---
 function MotivationCard() {
-  const { user } = useAuth();
-  const [quotes, setQuotes] = useState([]);
+  const [streak, setStreak] = useState(0);
 
   useEffect(() => {
-    if (!user) return;
-    const q = query(collection(db, "quotes"), where("uid", "==", user.uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setQuotes(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return unsubscribe;
-  }, [user]);
+    const storedStreak = localStorage.getItem("studyhub_streak");
+    if (storedStreak) {
+      const num = Number(storedStreak);
+      if (!Number.isNaN(num)) setStreak(num);
+    }
+  }, []);
 
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 

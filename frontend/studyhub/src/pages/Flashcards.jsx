@@ -37,18 +37,26 @@ export default function Flashcards() {
     setShowFront(true);
   };
 
-  const toggleShow = () => {
-    if (!cards.length) return;
-    setShowFront((prev) => !prev);
-  };
-
-  const nextCard = () => {
-    if (!cards.length) return;
+  const handleNext = () => {
+    if (cards.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % cards.length);
-    setShowFront(true);
+    setShowDefinition(false);
   };
 
-  const currentCard = cards[currentIndex];
+  const handlePrev = () => {
+    if (cards.length === 0) return;
+    setCurrentIndex((prev) =>
+      prev === 0 ? cards.length - 1 : prev - 1
+    );
+    setShowDefinition(false);
+  };
+
+  const handleToggle = () => {
+    if (cards.length === 0) return;
+    setShowDefinition((prev) => !prev);
+  };
+
+  const currentCard = cards[currentIndex] || null;
 
   return (
     <div className="flashcards-page">
@@ -74,7 +82,6 @@ export default function Flashcards() {
             </button>
           </form>
 
-          {/* Flashcard section */}
           <div className="flashcards-card-area">
             <div
               className={

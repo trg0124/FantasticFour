@@ -93,19 +93,15 @@ function FlashcardCard() {
 
 // --- MOTIVATION CARD ---
 function MotivationCard() {
-  const { user } = useAuth();
-  const [quotes, setQuotes] = useState([]);
+  const [streak, setStreak] = useState(0);
 
   useEffect(() => {
-    if (!user) return;
-    const q = query(collection(db, "quotes"), where("uid", "==", user.uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setQuotes(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return unsubscribe;
-  }, [user]);
-
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const storedStreak = localStorage.getItem("studyhub_streak");
+    if (storedStreak) {
+      const num = Number(storedStreak);
+      if (!Number.isNaN(num)) setStreak(num);
+    }
+  }, []);
 
   return (
     <div
@@ -114,17 +110,37 @@ function MotivationCard() {
         background: "white",
         borderRadius: "12px",
         padding: "1.5rem",
-        width: "200px",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        width: "260px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
+        textAlign: "left",
       }}
     >
       <h3>💡 Motivation</h3>
-      <p style={{ fontSize: "0.85rem", fontWeight: "500", marginTop: "0.5rem" }}>
-        {randomQuote ? `"${randomQuote.text}"` : "No quotes yet"}
-      </p>
+
+      {streak > 0 ? (
+        <>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              fontWeight: 500,
+              marginTop: "0.5rem",
+              marginBottom: "0.25rem",
+            }}
+          >
+            {streak} day streak ✅
+          </p>
+          <p style={{ fontSize: "0.85rem", margin: 0 }}>
+            Keep going! Click to see your full motivation board.
+          </p>
+        </>
+      ) : (
+        <p style={{ fontSize: "0.85rem", marginTop: "0.5rem" }}>
+          No streak yet. Click to start your first study streak.
+        </p>
+      )}
     </div>
   );
 }

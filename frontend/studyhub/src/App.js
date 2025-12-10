@@ -12,6 +12,8 @@ import Motivation from "./pages/Motivation";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 
+
+
 export default function App() {
   return (
     <Routes>
@@ -86,7 +88,35 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+     
 
     </Routes>
+  );
+}
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Resources from "./pages/Resources";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import HelpCenter from "./pages/HelpCenter";
+import Accessibility from "./pages/Accessibility";
+import FAQs from "./pages/FAQs";
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+      
+        <Route path="/" element={<Resources />} />
+
+        {/* Resource subpages */}
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/help-center" element={<HelpCenter />} />
+        <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/faqs" element={<FAQs />} />
+      </Routes>
+    </Router>
   );
 }

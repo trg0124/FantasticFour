@@ -94,7 +94,19 @@ export default function App() {
         }
       />
         
-      <Route
+ 
+
+    </Routes>
+        </Router>
+    
+
+  );
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Resources />} />
+     <Route
         path="/privacy-policy"
         element={
           <ProtectedRoute>
@@ -162,9 +174,9 @@ export default function App() {
 
     </Routes>
         </Router>
-    
+);
 
-  );
+
 }
 
        

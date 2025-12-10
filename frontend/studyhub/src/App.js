@@ -1,6 +1,6 @@
 import { useAuth } from "./components/Auth/authContext";
 import './App.css';
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";

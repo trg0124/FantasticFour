@@ -93,17 +93,7 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-         <Route
-        path="/privacy-policy"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <PrivacyPolicy />
-            </Layout>
-            </ProtctedRoute>
-            } 
-            /> 
-              
+        
       <Route
         path="/privacy-policy"
         element={
@@ -111,40 +101,53 @@ export default function App() {
             <Layout>
               <PrivacyPolicy />
             </Layout>
-          </ProtectedRoute> 
-            } 
-            />
-               <Route
+          </ProtectedRoute>
+        }
+      />
+              
+      <Route
+        path="/terms-conditions"
+        element={
+          <ProtectedRoute> 
+            <Layout>
+              <TermsConditions />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+              
+      <Route
         path="/help-center"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <HelpCenter />
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <HelpCenter />
             </Layout>
-            </ProtctedRoute>
-            } 
-            />
-               <Route
+          </ProtectedRoute>
+        }
+      />
+              
+      <Route
         path="/accessibility"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Accessibility />
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Accessibility />
             </Layout>
-            </ProtctedRoute>
-            } 
-            />
+          </ProtectedRoute> 
+        }
+      />
 
-               <Route
+      <Route
         path="/faqs"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <FAQs />
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <FAQs />
             </Layout>
-            </ProtctedRoute>
-            } 
-            />
+          </ProtectedRoute>
+        }
+      />
               
       <Route
         path="/resources"

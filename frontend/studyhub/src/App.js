@@ -12,6 +12,7 @@ import Flashcards from "./pages/Flashcards";
 import Motivation from "./pages/Motivation";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
+import Resources from "./pages/Resources";
 
 
 export default function App() {
@@ -84,6 +85,17 @@ export default function App() {
           <ProtectedRoute>
             <Layout>
               <Settings />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+          <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Resources />
             </Layout>
           </ProtectedRoute>
         }

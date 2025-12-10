@@ -100,6 +100,7 @@ export default function App() {
             <ProtectedRoute>
               <Layout>
                 <PrivacyPolicy />
+            </Layout>
             </ProtctedRoute>
             } 
             /> 
@@ -109,6 +110,7 @@ export default function App() {
             <ProtectedRoute>
               <Layout>
                 <TermsConditions />
+            </Layout>
             </ProtctedRoute>
             } 
             />
@@ -118,6 +120,7 @@ export default function App() {
             <ProtectedRoute>
               <Layout>
                 <HelpCenter />
+            </Layout>
             </ProtctedRoute>
             } 
             />
@@ -127,6 +130,7 @@ export default function App() {
             <ProtectedRoute>
               <Layout>
                 <Accessibility />
+            </Layout>
             </ProtctedRoute>
             } 
             />
@@ -137,6 +141,7 @@ export default function App() {
             <ProtectedRoute>
               <Layout>
                 <FAQs />
+            </Layout>
             </ProtctedRoute>
             } 
             />

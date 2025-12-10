@@ -75,44 +75,45 @@ function FlashcardCard() {
         borderRadius: "12px",
         padding: "1.5rem",
         width: "260px",
-        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        height: "220px",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
-        textAlign: "left",
+        textAlign: "center",       // ⭐ CENTER TEXT
+        display: "flex",            // ⭐ CENTER CONTENT
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
-      <h3>📚 Flashcards</h3>
-      <p style={{ fontWeight: 500, margin: "0.5rem 0" }}>
+      <h3 style={{ marginBottom: "0.5rem" }}>📚 Flashcards</h3>
+
+      <p style={{ marginBottom: "0.5rem", fontWeight: 500 }}>
         Total Cards: {cards.length}
       </p>
 
-      {cards.length === 0 ? (
-        <p style={{ fontSize: "0.85rem", margin: 0 }}>
-          No cards yet. Click to add your first flashcard.
-        </p>
-      ) : (
-        <>
-          <p style={{ fontSize: "0.85rem", margin: "0 0 0.25rem 0" }}>
+      {cards.length > 0 ? (
+        <div>
+          <p style={{ fontSize: "0.85rem", marginBottom: "0.25rem" }}>
             Recent terms:
           </p>
           <ul
             style={{
               fontSize: "0.85rem",
+              listStyle: "none",
+              padding: 0,
               margin: 0,
-              paddingLeft: "1rem",
             }}
           >
-            {cards.slice(0, 3).map((card) => (
-              <li key={card.id || card.term}>{card.term}</li>
+            {cards.slice(0, 3).map((c) => (
+              <li key={c.term}>{c.term}</li>
             ))}
           </ul>
-          {cards.length > 3 && (
-            <p style={{ fontSize: "0.8rem", marginTop: "0.25rem" }}>
-              …and more
-            </p>
-          )}
-        </>
+        </div>
+      ) : (
+        <p style={{ fontSize: "0.85rem" }}>
+          No cards yet. Click to add your first flashcard.
+        </p>
       )}
     </div>
   );
@@ -126,7 +127,7 @@ function MotivationCard() {
     const storedStreak = localStorage.getItem("studyhub_streak");
     if (storedStreak) {
       const num = Number(storedStreak);
-      if (!Number.isNaN(num)) setStreak(num);
+      if (!isNaN(num)) setStreak(num);
     }
   }, []);
 
@@ -138,34 +139,31 @@ function MotivationCard() {
         borderRadius: "12px",
         padding: "1.5rem",
         width: "260px",
-        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        height: "220px",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
-        textAlign: "left",
+        textAlign: "center",         
+        display: "flex",             
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
-      <h3>💡 Motivation</h3>
+      <h3 style={{ marginBottom: "0.5rem" }}> Motivation</h3>
 
       {streak > 0 ? (
         <>
-          <p
-            style={{
-              fontSize: "0.95rem",
-              fontWeight: 500,
-              marginTop: "0.5rem",
-              marginBottom: "0.25rem",
-            }}
-          >
-            {streak} day streak ✅
+          <p style={{ fontSize: "1rem", fontWeight: 600 }}>
+            {streak} day streak 
           </p>
-          <p style={{ fontSize: "0.85rem", margin: 0 }}>
+          <p style={{ fontSize: "0.85rem" }}>
             Keep going! Click to see your full motivation board.
           </p>
         </>
       ) : (
-        <p style={{ fontSize: "0.85rem", marginTop: "0.5rem" }}>
-          No streak yet. Click to start your first study streak.
+        <p style={{ fontSize: "0.85rem" }}>
+          No streak yet. Tap to start your first day!
         </p>
       )}
     </div>

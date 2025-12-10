@@ -1,30 +1,83 @@
 import { useNavigate } from "react-router-dom";
-import { PageContainer } from "../components/SharedLayout";
-import "../styles/resources.css";
+import React from "react";
+
 export default function Resources() {
-  const navigate = useNavigate();
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#FFF7F7",
+        padding: "3rem 1.5rem",
+        fontFamily: "Poppins",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          background: "white",
+          borderRadius: "16px",
+          padding: "2rem",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h1 style={{ fontSize: "2rem", fontWeight: 600, marginBottom: "2rem" }}>
+          Resources
+        </h1>
 
-   return (
-    <PageContainer title="Resources">
-      <button className="resource-button" onClick={() => navigate("/privacy-policy")}>
-        Privacy Policy
-      </button>
+       
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <button
+            style={buttonStyle}
+            onClick={() => {
+              /* does nothing */
+            }}
+          >
+            Study Guides
+          </button>
 
-       <button className="resource-button" onClick={() => navigate("/terms-conditions")}>
-        Terms & Conditions
-      </button>
+          <button
+            style={buttonStyle}
+            onClick={() => {
+         
+            }}
+          >
+            Class Notes
+          </button>
 
-            <button className="resource-button" onClick={() => navigate("/help-center")}>
-        Help Center
-      </button>
+          <button
+            style={buttonStyle}
+            onClick={() => {
+ 
+            }}
+          >
+            External Links
+          </button>
 
-            <button className="resource-button" onClick={() => navigate("/accessibility")}>
-        Accessibility
-      </button>
-
-            <button className="resource-button" onClick={() => navigate("/faqs")}>
-        FAQs
-      </button>
-    </PageContainer>
+          <button
+            style={buttonStyle}
+            onClick={() => {
+        
+            }}
+          >
+            Tutoring Resources
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
+
+const buttonStyle = {
+  width: "100%",
+  padding: "1rem",
+  fontSize: "1.1rem",
+  borderRadius: "12px",
+  border: "2px solid #e0dede",
+  background: "#fafafa",
+  cursor: "pointer",
+  textAlign: "left",
+  fontFamily: "Poppins",
+};

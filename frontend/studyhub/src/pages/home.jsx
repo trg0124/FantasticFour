@@ -51,17 +51,21 @@ function TodoCard() {
 
 // --- FLASHCARDS CARD ---
 function FlashcardCard() {
-  const { user } = useAuth();
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    if (!user) return;
-    const q = query(collection(db, "flashcards"), where("uid", "==", user.uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setCards(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-    return unsubscribe;
-  }, [user]);
+    const stored = localStorage.getItem("studyhub_flashcards");
+    if (!stored) return;
+
+    try {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        setCards(parsed);
+      }
+    } catch {
+      setCards([]);
+    }
+  }, []);
 
   return (
     <div
@@ -70,23 +74,46 @@ function FlashcardCard() {
         background: "white",
         borderRadius: "12px",
         padding: "1.5rem",
-        width: "200px",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        width: "260px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
         cursor: "pointer",
         border: "5px solid #4F46E5",
         fontWeight: "bold",
+        textAlign: "left",
       }}
     >
       <h3>📚 Flashcards</h3>
-      <p style={{ fontWeight: "500", margin: "0.5rem 0" }}>
+      <p style={{ fontWeight: 500, margin: "0.5rem 0" }}>
         Total Cards: {cards.length}
       </p>
-      <ul style={{ fontSize: "0.85rem", margin: 0, paddingLeft: "1rem" }}>
-        {cards.slice(0, 3).map((c) => (
-          <li key={c.id}>{c.question}</li>
-        ))}
-      </ul>
-      {cards.length > 3 && <p style={{ fontSize: "0.8rem" }}>…and more</p>}
+
+      {cards.length === 0 ? (
+        <p style={{ fontSize: "0.85rem", margin: 0 }}>
+          No cards yet. Click to add your first flashcard.
+        </p>
+      ) : (
+        <>
+          <p style={{ fontSize: "0.85rem", margin: "0 0 0.25rem 0" }}>
+            Recent terms:
+          </p>
+          <ul
+            style={{
+              fontSize: "0.85rem",
+              margin: 0,
+              paddingLeft: "1rem",
+            }}
+          >
+            {cards.slice(0, 3).map((card) => (
+              <li key={card.id || card.term}>{card.term}</li>
+            ))}
+          </ul>
+          {cards.length > 3 && (
+            <p style={{ fontSize: "0.8rem", marginTop: "0.25rem" }}>
+              …and more
+            </p>
+          )}
+        </>
+      )}
     </div>
   );
 }

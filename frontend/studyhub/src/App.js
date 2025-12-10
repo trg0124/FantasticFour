@@ -12,12 +12,7 @@ import Flashcards from "./pages/Flashcards";
 import Motivation from "./pages/Motivation";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
-import Resources from "./pages/Resources";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsConditions from "./pages/TermsConditions";
-import HelpCenter from "./pages/HelpCenter";
-import Accessibility from "./pages/Accessibility";
-import FAQs from "./pages/FAQs";
+
 
 export default function App() {
   return (
@@ -101,83 +96,6 @@ export default function App() {
     
 
   );
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Resources />} />
-     <Route
-        path="/privacy-policy"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <PrivacyPolicy />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-              
-      <Route
-        path="/terms-conditions"
-        element={
-          <ProtectedRoute> 
-            <Layout>
-              <TermsConditions />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-              
-      <Route
-        path="/help-center"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <HelpCenter />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-              
-      <Route
-        path="/accessibility"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <Accessibility />
-            </Layout>
-          </ProtectedRoute> 
-        }
-      />
-
-      <Route
-        path="/faqs"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <FAQs />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-              
-      <Route
-        path="/resources"
-        element={
-          <ProtectedRoute>
-            <Layout>
-              <Resources />
-            </Layout>
-          </ProtectedRoute>
-        }
-      />
-
-    </Routes>
-        </Router>
-);
-
-
-}
 
        
 

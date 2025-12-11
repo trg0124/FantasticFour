@@ -34,3 +34,8 @@ StudyHub is a productivity web app designed for students, built to make studying
 - Other Integrations: Spotify API
 
 ### Study smarter, not harder—with StudyHub!
+
+## How to run
+- Navigate to the studyhub directory in front end
+
+- Run: npm start

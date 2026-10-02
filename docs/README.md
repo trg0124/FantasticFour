@@ -5,7 +5,7 @@ StudyHub is a productivity web app designed for students, built to make studying
 - Carolina Estrada
 - Tanya Garza Saenz
 - Uzma Shams Sara
-- Kennedi Mack
+- Kennedi M
 
 ## Features
 - User Accounts – Secure registration and login with password encryption.
